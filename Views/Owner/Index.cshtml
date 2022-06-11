@@ -1,0 +1,32 @@
+﻿@model OwnerViewModel
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<body>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Управление</h2>
+            @foreach(string key in Model.Management.Keys)
+            {
+                @Html.ActionLink(key, "Index", Model.Management[key])
+                <br/>
+            }
+        </div>
+        <div class="col-md-4">
+            <h2>Отчетность</h2>
+            @foreach(string key in Model.Documentation.Keys)
+            {
+                @Html.ActionLink(key, Model.Documentation[key], "Owner");<br/>
+            }
+        </div>
+    </div>    
+</body>

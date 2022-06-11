@@ -1,0 +1,52 @@
+﻿@model GuestReservationsViewModel
+
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Guest" asp-action="Edit">@Model.GuestName</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Guest" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Guest" asp-action="Reservations">Бронирования</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<body>
+   <h2>История бронирований</h2>
+   <p>Текущие бронирования</p>
+   <table border="0" cellpadding="10">
+   <tr>
+    <th align="center">Дата</th>
+    <th align="center">Время</th>
+    <th align="center">Помещение</th>
+    <th align="center">Услуга</th>
+    <th align="center">Отмена</th>
+   </tr>
+   @foreach (ReservationView rv in Model.ReservationsViewCurrent)
+        {
+            <tr><td>@rv.ReservationDate</td><td>@rv.Time</td><td>@rv.Place</td><td>@rv.Service</td>
+                <td align="center"><form action="" method="post"><input type="text" name="id" value=@rv.id.ToString() hidden/><button type="submit" class="btn btn-lg btn-secondary">Отменить</button></form></td></tr>
+        }
+  </table>
+   <p>Прошлые бронирования</p>
+   <table border="0" cellpadding="10">
+   <tr>
+    <th align="center">Дата</th>
+    <th align="center">Время</th>
+    <th align="center">Помещение</th>
+    <th align="center">Услуга</th>
+    <th align="center">Отмена</th>
+   </tr>
+   @foreach (ReservationView rv in Model.ReservationsViewPast)
+        {
+            <tr><td>@rv.ReservationDate</td><td>@rv.Time</td><td>@rv.Place</td><td>@rv.Service</td>
+                <td align="center">@rv.Cancelled</td></tr>
+        }
+  </table>
+</body>

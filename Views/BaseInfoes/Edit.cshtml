@@ -1,0 +1,38 @@
+﻿@model PracticalTraining.Models.DatabaseMANKA.BaseInfo
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<h1>Редактирование</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OwnerLogin" />
+            <input type="hidden" asp-for="OwnerPassword" />
+            <div class="form-group">
+                <label asp-for="BasicText" class="control-label"><text>Текст главной страницы</text></label>
+                <textarea asp-for="BasicText" style="width:600px;height:200px;" class="form-control"></textarea>
+                <span asp-validation-for="BasicText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-secondary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

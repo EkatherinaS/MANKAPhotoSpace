@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PracticalTraining.Models.DatabaseMANKA.ServiceInfo>
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<h1>Услуги</h1>
+
+<p>
+    <a asp-action="Create"><text>Добавить</text></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Название услуги
+            </th>
+            <th>
+                Цена
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServicePrice)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ServiceCode">Изменить</a> |
+                <a asp-action="Delete" asp-route-id="@item.ServiceCode">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

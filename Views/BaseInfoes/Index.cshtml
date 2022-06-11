@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PracticalTraining.Models.DatabaseMANKA.BaseInfo>
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<h1>О фотостудии</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <text>Текст главной страницы</text>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasicText)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OwnerLogin">Редактировать</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

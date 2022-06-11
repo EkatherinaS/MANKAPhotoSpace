@@ -1,0 +1,105 @@
+﻿@model ReservationViewModel
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Guest" asp-action="Edit">@Model.GuestName</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Guest" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Guest" asp-action="Reservations">Бронирования</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<body>
+    <h2>Бронирование</h2>
+    <form action="" method="post" id="reservationInfo" >
+    <table border="0" cellpadding="10">
+        <tr>
+                <td><text>Помещение</text></td>
+                <td><select name="place" onChange="this.form.submit();" style="width:400px;height:30px;">
+                        @foreach(ElementWithId place in Model.Places)
+                        {
+                            if (place.Id.ToString() == Model.Place)
+                            {
+                                <option selected value=@place.Id.ToString()>@place.Name</option>
+                            }
+                            else
+                            {
+                                <option value=@place.Id.ToString()>@place.Name</option>   
+                            }
+                        }
+                    </select></td>
+        </tr>
+        <tr>
+            <td><text>Дата</text></td>
+            <td><input type="date" name="date" onChange="this.form.submit();" value=@Model.Date max="2023-01-01" min="2022-01-01" style="width:200px;height:30px;"></td>
+        </tr>
+        <tr>            
+            <td><text>Количество часов</text></td>
+            <td><input name="hourAmount" onkeypress="return false" onChange="this.form.submit();" type="number" step="1" min="1" max="12" value=@Model.HourAmount style="width:200px;height:30px;"></td>
+        </tr>
+        <tr>
+            <td><text>Время</text></td>
+            <td><select name="time" style="width:400px;height:30px;">
+                        @foreach(ElementWithId time in Model.Times)
+                        {
+                            <option value=@time.Id.ToString()>@time.Name</option>
+                        }
+                    </select></td>
+        </tr>
+        <tr>
+            <td><text>Услуга</text></td>
+            <td><select name="service" style="width:400px;height:30px;">
+                    @foreach(ElementWithId service in Model.Services)
+                    {
+                        if (service.Id.ToString() == Model.Service)
+                        {
+                            <option selected value=@service.Id.ToString()>@service.Name </option>
+                        }
+                        else
+                        {
+                            <option value=@service.Id.ToString()>@service.Name </option> 
+                        }
+                    }
+                </select></td>
+        </tr>
+        <tr>
+            <td><text>Количество человек</text></td>
+            <td><input onkeypress="return false" name="peopleNumber" type="number" step="1" min="1" max=@Model.MaxNumber.ToString() value=@Model.PeopleNumber pattern="\d*" style="width:400px;height:30px;" ></td>
+        </tr>
+        <tr>
+            <td><text>Способ оплаты</text></td>
+            <td><select name="payment" style="width:400px;height:30px;">
+                    @foreach(ElementWithId payment in Model.Payments)
+                    {
+                        if (payment.Id.ToString() == Model.Payment)
+                        {
+                            <option selected value=@payment.Id.ToString()>@payment.Name</option>
+                        }
+                        else
+                        {
+                            <option value=@payment.Id.ToString()>@payment.Name</option>
+                        }
+                    }
+                </select></td>
+        </tr>
+        <tr>
+            <td><text>Комментарий</text></td>
+            <td><textarea name="comment" style="width:600px;height:200px;">@Model.Comment</textarea></td>
+        </tr>
+    </table>
+    <input name="finalInput" id="fi" value="false" hidden/>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-lg btn-secondary" href="/Guest/Index" onclick="document.getElementById('fi').value = 'true'"><text>Забронировать</text></button>
+        </div>
+    </div>
+    </form>
+</body>

@@ -1,0 +1,44 @@
+﻿@model PlaceInfoModel
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<h1>Закрыть</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            <text>Название помещения</text>
+        </dt>
+        <dd class = "col-sm-8">
+             <text>@Html.DisplayFor(model => model.PlaceName)</text>
+        </dd>
+        <dt class = "col-sm-4">
+            <text>Максимально человек</text>
+        </dt>
+        <dd class = "col-sm-8">
+            <text>@Html.DisplayFor(model => model.MaxPeopleNumber)</text>
+        </dd>
+        <dt class = "col-sm-4">
+            <text>Адрес</text>
+        </dt>
+        <dd class = "col-sm-8">
+            @{string address = "г. " + Model.City
+                                    + ", ул. " + Model.Street
+                                    + ", " + Model.Building;}
+            <text>@Html.DisplayFor(model => address)</text>
+        </dd class>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PlaceCode" />
+        <input type="submit" value="Удалить" class="btn btn-secondary" /> |
+        <a asp-action="Index"><text>Назад</text></a>
+    </form>
+</div>

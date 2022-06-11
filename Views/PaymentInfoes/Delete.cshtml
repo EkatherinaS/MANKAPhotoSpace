@@ -1,0 +1,31 @@
+﻿@model PracticalTraining.Models.DatabaseMANKA.PaymentInfo
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<h1>Закрыть</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-5">
+            <text>Название способа оплаты</text>
+        </dt>
+        <dd class = "col-sm-7">
+            @Html.DisplayFor(model => model.PaymentName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PaymentCode" />
+        <input type="submit" value="Удалить" class="btn btn-secondary" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>

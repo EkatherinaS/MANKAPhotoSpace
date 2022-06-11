@@ -1,0 +1,71 @@
+﻿@model PlaceInfoModel
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<h1>Добавить</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="PlaceName" class="control-label"><text>Название помещения</text></label>
+                <input asp-for="PlaceName" class="form-control" />
+                <span asp-validation-for="PlaceName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxPeopleNumber" class="control-label"><text>Максимально человек</text></label>
+                <input asp-for="MaxPeopleNumber" class="form-control" />
+                <span asp-validation-for="MaxPeopleNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"><text>Город</text></label>
+                <input asp-for="City" class="form-control" list="cities" />
+                <datalist id="cities">
+                  @foreach(CityInfo city in Model.Cities)
+                        {
+                            <option><text>@city.CityName</text></option>
+                        }
+                </datalist>
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Street" class="control-label"><text>Улица</text></label>
+                <input asp-for="Street" class="form-control" list="streets" />
+                <datalist id="streets">
+                  @foreach(StreetInfo street in Model.Streets)
+                        {
+                            <option value=@street.StreetName/>
+                        }
+                </datalist>
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Building" class="control-label"><text>Дом</text></label>
+                <input asp-for="Building" class="form-control" list="buildings" />
+                <datalist id="buildings">
+                  @foreach(BuildingInfo building in Model.Buildings)
+                        {
+                            <option>@building.BuildingNumber</option>
+                        }
+                </datalist>
+                <span asp-validation-for="Building" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-secondary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index"><text>Назад</text></a>
+</div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

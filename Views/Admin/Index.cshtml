@@ -1,0 +1,73 @@
+﻿@model AdminViewModel
+
+@foreach(ReservationView rv in Model.ChosenReservations)
+    {
+        <style>
+            @("#sender" + rv.id.ToString()) {
+                display: none;
+            }
+
+            @("#window" + rv.id.ToString()) {
+                width: 800px;
+                height: 500px;
+                resize: both;
+                text-align: left;
+                padding: 15px;
+                border-radius: 10px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: auto;
+                background-color: whitesmoke;
+                box-shadow: 0px 0px 10px 5px #7F7F7F;
+            }
+
+            @("#sender" + rv.id.ToString()):target {
+                display: block;
+            }
+        </style>
+    }
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">@Model.AdminName</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AvailableWork">Доступные бронирования</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<body>
+   <h2>Ближайшие бронирования</h2>
+   <table border="0" cellpadding="10">
+   <tr>
+    <th align="center">Дата</th>
+    <th align="center">Время</th>
+    <th align="center">Помещение</th>
+    <th align="center">Услуга</th>
+    <th align="center"></th>
+    <th align="center"></th>
+   </tr>
+   @foreach (ReservationView rv in Model.ChosenReservations)
+        {
+            <tr><td>@rv.ReservationDate</td><td>@rv.Time</td><td>@rv.Place</td><td>@rv.Service</td>
+                <td align="center"><button>
+                    
+                <a href=@("#sender" + rv.id.ToString())>Подробнее</a></button></td>
+
+                <td><a href="#" id=@("sender" + rv.id.ToString())>
+                <div id=@("window" + rv.id.ToString())><p>Гость: @rv.GuestName<br><br>Контакты:<br>@rv.GuestPhone<br>@rv.GuestMail<br>@rv.GuestSocNet<br>
+                    <br>Комментарий:<br>@rv.Comment</p></div></a></td>
+
+                <td><form action="" method="post"><input type="text" name="id" value=@rv.id.ToString() hidden/><button type="submit">Отменить</button></form></td>
+                </tr>
+        }
+    </table>
+    
+</body>

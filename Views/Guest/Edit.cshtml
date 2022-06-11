@@ -1,0 +1,46 @@
+﻿@model GuestEditViewModel
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Guest" asp-action="Edit">@Model.GuestName @Model.GuestFamilyName</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Guest" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Guest" asp-action="Reservations">Бронирования</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<body>
+    <form action="" method="post">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td><p>Имя*:</p></td>
+                <td><input type="text" size="40" name="name" value=@Model.GuestName /></td>
+            </tr>
+            <tr>
+                <td><p>Фамилия*:</p></td>
+                <td><input type="text" size="40" name="famName" value=@Model.GuestFamilyName /></td>
+            </tr>
+            <tr>
+                <td><p>Электронная почта:</p></td>
+                <td><input type="text" size="40" name="mail" value=@Model.GuestEmail /></td>
+            </tr>
+            <tr>
+                <td><p>Соц. сети:</p></td>
+                <td><input type="text" size="40" name="socNet" value=@Model.GuestSocialNetwork /></td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-lg btn-secondary"><text>Сохранить</text></button>
+            </div>
+        </div>
+    </form>
+</body>

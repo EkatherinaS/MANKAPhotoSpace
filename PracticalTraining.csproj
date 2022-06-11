@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Database\**" />
+    <Content Remove="Models\Database\**" />
+    <EmbeddedResource Remove="Models\Database\**" />
+    <None Remove="Models\Database\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Content\manka_perfect_space-___CQlN-nUFHQk___-2.jpg" />
+    <Content Remove="wwwroot\Content\manka_perfect_space-___CQlN-nUFHQk___-3.jpg" />
+    <Content Remove="wwwroot\Content\manka_perfect_space-___CQlN-nUFHQk___-4.jpg" />
+    <Content Remove="wwwroot\Content\manka_perfect_space-___CTd1MZvKV_q___-.jpg" />
+    <Content Remove="wwwroot\Content\manka_perfect_space-___CTlyDzjt0uu___-.jpg" />
+    <Content Remove="wwwroot\Content\manka_perfect_space-___CT_SUUsKpgj___-.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="wwwroot\Content\imgCoffee.jpg" />
+    <None Remove="wwwroot\Content\imgCup.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\UserInfoes\Edit.cshtml" />
+    <None Include="Views\UserInfoes\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Documentation\Documentation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\Content\imgCup.jpg" />
+  </ItemGroup>
+
+</Project>

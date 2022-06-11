@@ -1,0 +1,67 @@
+﻿@model PracticalTraining.Models.DatabaseMANKA.StaffInfo
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<h1>Увольнение</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            <text>Серия паспорта</text>
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.PassportSeries)
+        </dd>
+        <dt class = "col-sm-4">
+            <text>Номер паспорта</text>
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.PassportNumber)
+        </dd>
+        <dt class = "col-sm-4">
+            <text>СНИЛС</text>
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Snils)
+        </dd>
+        <dt class = "col-sm-4">
+            <text>Почасовая оплата</text>
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.PaymentPerHour)
+        </dd>
+        <dt class = "col-sm-4">
+            <text>Фамилия</text>
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.StaffFamilyName)
+        </dd>
+        <dt class = "col-sm-4">
+            <text>Имя</text>
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.StaffName)
+        </dd>
+        <dt class = "col-sm-4">
+            <text>Отчество</text>
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.StaffSurname)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="StaffPhone" />
+        <input type="submit" value="Удалить" class="btn btn-secondary" /> |
+        <a asp-action="Index"><text>Назад</text></a>
+    </form>
+</div>

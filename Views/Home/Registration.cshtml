@@ -1,0 +1,66 @@
+﻿@model bool[]
+
+@{
+    string GetButtonName()
+    {
+        if (Model[1]) { return "Далее"; }
+        else {return "Зарегистрироваться"; }
+    }
+}
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Registration">Регистрация</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login" asp-route-validLogin=true>Войти</a>
+    </li>
+}
+
+<body>
+    <form action="" method="post">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td><p>Имя*:</p></td>
+                <td><input required type="text" size="40" name="name"/></td>
+            </tr>
+            <tr>
+                <td><p>Фамилия*:</p></td>
+                <td><input required type="text" size="40" name="famName"/></td>
+            </tr>
+            <tr>
+                <td><p>Телефон*:</p></td>
+                <td><input required type="text" onfocus="this.value=''" name="phone" size="40"/>            
+                    <script>
+                        jQuery(function($) {
+                        $("input[name=phone]").mask("+7(999) 999-99-99");
+                      });
+                    </script></td>
+            </tr>
+            <tr>
+                <td><p>Электронная почта:</p></td>
+                <td><input type="text" size="40" name="mail"/></td>
+            </tr>
+            <tr>
+                <td><p>Соц. сети:</p></td>
+                <td><input type="text" size="40" name="socNet"/></td>
+            </tr>
+            <tr>
+                <td><p>Пароль*:</p></td>
+                <td><input required type="text" size="40" name="password"/></td>
+            </tr>
+        </table>
+        <p hidden=@Model[0]>Данный номер телефона уже используется</p>
+        <input hidden type="text" value=@Model[1].ToString() name="cont"/>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-lg btn-secondary"><text> @GetButtonName()</text></button>
+            </div>
+        </div>
+    </form>
+</body>

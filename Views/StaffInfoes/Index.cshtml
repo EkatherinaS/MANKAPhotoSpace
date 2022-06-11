@@ -1,0 +1,89 @@
+﻿@model IEnumerable<PracticalTraining.Models.DatabaseMANKA.StaffInfo>
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<h1>Персонал</h1>
+
+<p>
+    <a asp-action="Create"><text>Добавить</text></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Номер телефона
+            </th>
+            <th>
+                Серия паспорта
+            </th>
+            <th>
+                Номер паспорта
+            </th>
+            <th>
+                СНИЛС
+            </th>
+            <th>
+                Почасовая оплата
+            </th>
+            <th>
+                Фамилия
+            </th>
+            <th>
+                Имя
+            </th>
+            <th>
+                Отчество
+            </th>
+            <th>
+                Дата увольнения
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffPhoneView)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassportSeries)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassportNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Snils)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentPerHour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffFamilyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResignationDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StaffPhone">Редактировать</a> |
+                <a asp-action="Delete" asp-route-id="@item.StaffPhone">Уволить</a> |
+                <a asp-action="TakeBack" asp-route-id="@item.StaffPhone">Вернуть</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿@model bool
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Registration">Регистрация</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login" asp-route-validLogin=true>Войти</a>
+    </li>
+}
+
+<body>
+    <form action="" method="post">
+        <p>
+            <p>Логин (номер телефона):</p>
+            <input required type="text" onfocus="this.value=''" name="login" size="40"/>            
+            <script>
+                jQuery(function($) {
+                $("input[name=login]").mask("+7(999) 999-99-99");
+              });
+            </script>
+        </p>
+        <p>
+            <p>Пароль:</p>
+            <input required type="text" size="40" name="password"/>
+        </p>
+        <p hidden=@Model>Некорректный логин или пароль</p>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-lg btn-secondary"><text>Войти</text></button>
+            </div>
+        </div>
+    </form>
+</body>

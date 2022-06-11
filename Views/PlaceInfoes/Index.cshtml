@@ -1,0 +1,56 @@
+﻿@model List<PlaceInfoModel>
+
+@section menu
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="Index">На главную</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выйти</a>
+    </li>
+}
+
+<h1>Помещения</h1>
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <text>Название помещения</text>
+            </th>
+            <th>
+                <text>Максимально человек</text>
+            </th>
+            <th>
+                <text>Адрес</text>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            string address = "г. " + item.City
+                           + ", ул. " + item.Street
+                           + ", " + item.Building;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxPeopleNumber)
+                </td>
+                <td>
+                
+                    @Html.DisplayFor(modelItem => address)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PlaceCode">Редактировать</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PlaceCode">Удалить</a>
+                </td>
+            </tr>
+}
+    </tbody>
+</table>
